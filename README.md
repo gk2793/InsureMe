@@ -164,7 +164,7 @@ pipeline {
         stage('Containerize the application'){
             steps { 
                echo 'Creating Docker image'
-               sh "docker build -t abhipraydh96/insure:v1 ."
+               sh "docker build -t kartik2793/insure:v1 ."
             }
         }
         
@@ -173,7 +173,7 @@ pipeline {
           steps {
        	withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                sh 'docker push abhipraydh96/insure:v1'
+                sh 'docker push kartik2793/insure:v1'
         }
       }
     }
